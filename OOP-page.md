@@ -1,44 +1,45 @@
-
-interface PersonInterface{
-  firstname: string,
-  lastname: string,
-  phone:number,
-  email: string
+// Define an interface for a Person
+interface PersonInterface {
+  firstname: string;
+  lastname: string;
+  phone: number;
+  email: string;
 }
 
-
+// A sample variable
 let a = 7;
 
+// Define a class for a Person
+class Person {
+  // Properties of the class (non-static)
+  public firstname: string = "";
+  public lastname: string = "";
+  public phone: number = 0;
+  public email: string = "";
 
-class Person{
-  // Static class & Nonstatic
-  public firstname : string = "";
-  public lastname : string = "";
-  public phone : number = 0;
-  public email : string = "";
-
-  public constructor(a : string){
-    // ავტომატურად ხდებ constructor ფუნქციის გაშვება
+  // Constructor is called automatically on object creation
+  public constructor(a: string) {
     this.firstname = "David";
     this.lastname = a;
   }
 
-  public setPhone(phone_number : number){
-    // SETER - მიმნიჭებელი
+  // Setter method to assign phone number
+  public setPhone(phone_number: number): void {
     this.phone = phone_number;
   }
 
-  public getFullName(){
-    // GETER = გეტერ- - გამომტანი - აუთფუთზე მიმღები
-    return this.firstname + " "+ this.lastname;
+  // Getter method to return the full name
+  public getFullName(): string {
+    return this.firstname + " " + this.lastname;
   }
 }
 
-let person = new Person("Leen");                 // კლასის ონჯექთი
+// Create an object of the class
+let person = new Person("Leen");
 person.setPhone(571435678);
 
+// React functional component
 export default function Home() {
-
   console.log(person);
 
   return (
