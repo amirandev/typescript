@@ -99,5 +99,66 @@ const connection = await mysql.createConnection({ ... });
 console.log(await connection.query('SELECT 1'));
 ```
 
+## 🔍 Does the MySQL API route need `'use server'`?
+
+**No — not in your current code.**
+
+In **Next.js App Router**, **API routes like `app/api/users/route.ts` are server-only by default**. You do **not** need to add `'use server'` inside those files.
+
+Here's why:
+
+* Files in `app/api/**/route.ts` are **server functions**.
+* They are **never bundled to the client**.
+* They're always executed on the backend (in Node.js runtime).
+* `'use server'` is for **server actions** in **components**, not API handlers.
+
 ---
 
+## ✅ When DO you need `'use server'`?
+
+Use `'use server'` **only in server components or files where both client and server logic could exist**, such as:
+
+### Example: Server Action in a Component
+
+```ts
+// app/form/page.tsx
+'use server';
+
+export async function createUser(formData: FormData) {
+  const name = formData.get('name');
+  const email = formData.get('email');
+  await query('INSERT INTO users (name, email) VALUES (?, ?)', [name, email]);
+}
+```
+
+In this case, `'use server'` tells Next.js: “run this function only on the server.”
+
+---
+
+## 🚫 Don't use `'use server'` in:
+
+* `app/api/**/route.ts` files (already server)
+* `lib/db.ts` (pure backend logic)
+* Pages/components using only API calls (`fetch('/api/...')`)
+
+---
+
+## ✅ Your setup is perfect without `'use server'`
+
+So this is **correct** and works:
+
+```ts
+// app/api/users/route.ts
+import { connectToDatabase } from '@/lib/db';
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET() {
+  const db = await connectToDatabase();
+  const [rows] = await db.query('SELECT * FROM users');
+  return NextResponse.json(rows);
+}
+```
+
+No need to add `'use server'` here.
+
+---
