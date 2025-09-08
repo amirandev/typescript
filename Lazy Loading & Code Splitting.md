@@ -1,12 +1,8 @@
 
 ---
 
-### **Slide 1:**
-
-**სათაური:** React პროექტის ოპტიმიზაცია
-**ქვესათაური:** Lazy Loading & Code Splitting
-**ავტორი:** (თქვენი სახელი)
-**ვიზუალი:** React ლოგო ან ოპტიმიზაციის ილუსტრაცია
+### **Slide 1: Lazy Loading & Code Splitting**
+https://legacy.reactjs.org/docs/code-splitting.html
 
 ---
 
