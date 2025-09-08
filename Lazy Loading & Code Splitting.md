@@ -2,6 +2,9 @@
 ---
 
 ### **Slide 1: Lazy Loading & Code Splitting**
+
+<img width="1081" height="555" alt="Screenshot 2025-09-08 at 15-58-20 (300) Code Splitting and Lazy Loading React JS Advanced Concepts - YouTube" src="https://github.com/user-attachments/assets/2a967972-89fa-4552-a2f2-103c0b9a148b" />
+
 https://legacy.reactjs.org/docs/code-splitting.html
 
 ---
@@ -135,3 +138,4 @@ function App() {
 * ისინი ამცირებენ საწყის დატვირთვის დროს და აუმჯობესებენ მომხმარებლის გამოცდილებას
 * მომხმარებელს მიეწოდება მხოლოდ ის კოდი, რაც კონკრეტულ მომენტში სჭირდება
 ---
+
